@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>net.rhydlewis.alfred.searchmailmate</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>BD0D03D2-DE69-41B2-8540-051FE09712D3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>851B89AC-530D-452C-B421-6F135D4BE161</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Rhyd Lewis</string>
+	<key>description</key>
+	<string>Uses a query provided in Alfred and updates MailMate's search field</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Search MailMate</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>sm</string>
+				<key>subtext</key>
+				<string>Enter a MailMate query</string>
+				<key>text</key>
+				<string>Search MailMate</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>BD0D03D2-DE69-41B2-8540-051FE09712D3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+	tell application "MailMate"
+		activate
+	end tell
+	tell application "System Events"
+		tell process "MailMate"
+			tell window 1
+				tell toolbar 1
+					tell group 4
+						set value of text field 1 to q
+						set value of attribute "AXFocused" of text field 1 to true
+					end tell
+				end tell
+			end tell
+		end tell
+		delay 0.5
+		key code 36
+	end tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>851B89AC-530D-452C-B421-6F135D4BE161</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>851B89AC-530D-452C-B421-6F135D4BE161</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>BD0D03D2-DE69-41B2-8540-051FE09712D3</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>rhydlewis.net</string>
+</dict>
+</plist>
