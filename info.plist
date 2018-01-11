@@ -17,6 +17,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -49,31 +51,13 @@
 			<key>uid</key>
 			<string>BD0D03D2-DE69-41B2-8540-051FE09712D3</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>applescript</key>
-				<string>on alfred_script(q)
-	tell application "MailMate"
-		activate
-	end tell
-	tell application "System Events"
-		tell process "MailMate"
-			tell window 1
-				tell toolbar 1
-					tell group 4
-						set value of text field 1 to q
-						set value of attribute "AXFocused" of text field 1 to true
-					end tell
-				end tell
-			end tell
-		end tell
-		delay 0.5
-		key code 36
-	end tell
-end alfred_script</string>
+				<string>on alfred_script(q)	set query to q as text	tell application id "com.freron.MailMate"		activate	end tell	tell application id "com.apple.systemevents"		tell process id "com.freron.MailMate"			tell application "System Events"				repeat 3 times					key code 53				end repeat			end tell			keystroke "f" using {command down, option down}			delay 0.2			keystroke query			delay 0.4			keystroke return		end tell	end tellend alfred_script</string>
 				<key>cachescript</key>
 				<true/>
 			</dict>
@@ -82,7 +66,7 @@ end alfred_script</string>
 			<key>uid</key>
 			<string>851B89AC-530D-452C-B421-6F135D4BE161</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -91,11 +75,15 @@ end alfred_script</string>
 	<dict>
 		<key>851B89AC-530D-452C-B421-6F135D4BE161</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
 		<key>BD0D03D2-DE69-41B2-8540-051FE09712D3</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
